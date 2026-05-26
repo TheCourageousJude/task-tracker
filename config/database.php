@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Load .env file into $_ENV superglobal.
- * Call once at bootstrap (public/index.php already does this).
- */
 function loadEnv(string $path): void {
     if (!file_exists($path)) return;
     foreach (file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
@@ -13,10 +9,6 @@ function loadEnv(string $path): void {
     }
 }
 
-/**
- * Returns a shared PDO connection (singleton pattern).
- * Uses prepared statements — safe against SQL injection.
- */
 function getDB(): PDO {
     static $pdo = null;
     if ($pdo !== null) return $pdo;
@@ -28,7 +20,7 @@ function getDB(): PDO {
     );
 
     $pdo = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASS'], [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,   // throw on errors
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,   // error throw
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,         // arrays by column name
         PDO::ATTR_EMULATE_PREPARES   => false,                    // real prepared statements
     ]);
