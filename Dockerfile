@@ -6,4 +6,6 @@ WORKDIR /app
 
 COPY . .
 
-CMD sh -c "php -S 0.0.0.0:${PORT:-8080} -t public/"
+RUN chmod +x start.sh
+
+CMD ["./start.sh"]
