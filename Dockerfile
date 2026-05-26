@@ -2,10 +2,10 @@ FROM php:8.2-cli
 
 RUN docker-php-ext-install pdo pdo_mysql
 
+COPY . /app
+
 WORKDIR /app
 
-COPY . .
+EXPOSE 8080
 
-RUN chmod +x start.sh
-
-CMD ["/bin/sh", "./start.sh"]
+CMD ["php", "-S", "0.0.0.0:8080", "-t", "public/"]
