@@ -2,9 +2,7 @@
 
 require_once __DIR__ . '/../models/User.php';
 
-/**
- * AuthController — handles register, login, and logout.
- */
+// AuthController — handles register, login, and logout.
 class AuthController {
 
     private User $user;
@@ -13,7 +11,7 @@ class AuthController {
         $this->user = new User(getDB());
     }
 
-    // ── LOGIN ─────────────────────────────────────────────────────────────
+    // =LOGIN=
     // GET  /login  → show the login form
     // POST /login  → validate credentials and start session
     public function login(): void {
@@ -42,7 +40,7 @@ class AuthController {
         require __DIR__ . '/../views/auth/login.php';
     }
 
-    // ── REGISTER ──────────────────────────────────────────────────────────
+    // =REGISTER=
     // GET  /register → show the registration form
     // POST /register → validate input and create account
     public function register(): void {
@@ -75,7 +73,7 @@ class AuthController {
         require __DIR__ . '/../views/auth/register.php';
     }
 
-    // ── LOGOUT ────────────────────────────────────────────────────────────
+    // =LOG-OUT=
     // POST /logout → destroy session and redirect
     public function logout(): void {
         session_destroy();
