@@ -1,12 +1,5 @@
 <?php
 
-/**
- * public/index.php — Front Controller (Router)
- *
- * This is the ONLY file exposed to the web.
- * Every URL request comes here first.
- * We parse the URL, match a route, and call the right controller method.
- */
 
 session_start();
 
